@@ -20,7 +20,7 @@ public class MiembrosDuplicadosSteps extends FastCucumberSteps {
         grupo = new Grupo();
         grupo.setMiembros(Arrays.asList(miembro1, miembro2));
         try {
-            grupo.validar();
+            grupo.validarTamanioGrupo();
         } catch (GrupoInvalidoException e) {
             excepcion = e;
         }
