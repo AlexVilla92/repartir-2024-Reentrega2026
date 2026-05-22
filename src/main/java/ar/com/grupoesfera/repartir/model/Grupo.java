@@ -1,5 +1,6 @@
 package ar.com.grupoesfera.repartir.model;
 
+import ar.com.grupoesfera.repartir.exceptions.GrupoInvalidoException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
@@ -70,5 +71,12 @@ public class Grupo {
     public boolean estaFormado() {
 
         return (miembros != null) && (miembros.size() > 1);
+    }
+
+    public void agregarGasto(Gasto gasto) {
+
+        if (gasto.getMonto().compareTo(BigDecimal.ZERO) < 0) {
+            throw new GrupoInvalidoException();
+        }
     }
 }
